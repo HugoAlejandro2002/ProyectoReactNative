@@ -8,9 +8,12 @@ import { auth } from '../../services/firebase'
 import { useDispatch } from "react-redux";
 import { authUser } from "../../store/actions/authUserAction";
 import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 
 export const LoginScreen = () => {
+
+    const navigation= useNavigation();
 
     const dispatch = useDispatch();
     const selector = useSelector(store => store.auth);
@@ -89,7 +92,7 @@ export const LoginScreen = () => {
                 />
                 <View style={{ flexDirection: 'row' }}>
                     <Text style={{ color: 'grey' }}>No tienes una cuenta?</Text>
-                    <TouchableOpacity onPress={() => { }}>
+                    <TouchableOpacity onPress={() => { navigation.navigate('SignUpScreen')}}>
                         <Text style={{ color: '#0ca5b0' }}> Registrate</Text>
                     </TouchableOpacity>
                 </View>

@@ -5,7 +5,7 @@ import { FilaSector } from "../../components/FilaSector"
 
 export const PedirFilaScreen = () => {
     return (
-        <View>
+        <View style={{backgroundColor:'#c2def2', flex:1,borderTopEndRadius:20,borderTopStartRadius:20}}>
             <ScrollView>
                 <FilaSector props={{section:'/pedirFilaSalud'}}/>
                 <FilaSector props={{section:'/pedirFilaTransporte'}}/>

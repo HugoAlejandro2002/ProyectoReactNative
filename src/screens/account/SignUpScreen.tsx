@@ -3,30 +3,35 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { Button, Input } from "@rneui/themed"
 import { useFormik } from 'formik';
 import * as YUP from 'yup';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../services/firebase'
 import { useDispatch } from "react-redux";
 import { authUser } from "../../store/actions/authUserAction";
 import { useSelector } from "react-redux";
 
 
-export const SignUpScreen = () => {
+export const SignUpScreen = (props:any) => {
+    const {
+        navigation,
+    } = props;
+    // console.log(props)
 
     const dispatch = useDispatch();
     const selector = useSelector(store => store.auth);
-    console.log(selector.isLogin)
-
+  
     const initialValues = {
         email: '',
         password: '',
     };
 
-    const loggin = (email: string, password: string) => {
-        signInWithEmailAndPassword(auth, email, password)
+    const signup = (email: string, password: string) => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then((user) => {
                 //console.log(user)
+                navigation.popToTop()
                 dispatch(authUser)
                 //console.log(selector.isLogin)
+                
             })
             .catch((error) => {
                 console.error(error)
@@ -45,7 +50,7 @@ export const SignUpScreen = () => {
         // validationOnChange: false,
 
         onSubmit: (formValue) => {
-            loggin(formValue.email, formValue.password)
+            signup(formValue.email, formValue.password)
         },
     });
 
@@ -71,7 +76,7 @@ export const SignUpScreen = () => {
                     secureTextEntry={true}
                 />
                 <Button
-                    title="Log In"
+                    title="Registrate"
                     loading={false}
                     //   loadingProps={{ size: 'small', color: 'white' }}
                     buttonStyle={{
@@ -87,12 +92,6 @@ export const SignUpScreen = () => {
                     }}
                     onPress={() => { formik.submitForm() }}
                 />
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ color: 'grey' }}>No tienes una cuenta?</Text>
-                    <TouchableOpacity onPress={() => { }}>
-                        <Text style={{ color: '#0ca5b0' }}> Registrate</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
 
         </View>

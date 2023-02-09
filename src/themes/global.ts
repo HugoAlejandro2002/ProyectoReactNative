@@ -9,7 +9,7 @@ export const globalStyles = StyleSheet.create({
     contentText:{ 
         fontSize: 18, 
         marginVertical:5,
-        color:'#e6e3e4' 
+        color:'#e6e3aa' 
     },
     titleSection:{ alignItems: 'flex-end',
           flexDirection:'row', 
@@ -17,6 +17,6 @@ export const globalStyles = StyleSheet.create({
           padding:18
     },
     backGroundApp:{
-
+        backgroundColor:'#c2def2'
     }
 })

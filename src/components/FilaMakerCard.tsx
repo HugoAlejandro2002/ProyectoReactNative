@@ -15,9 +15,18 @@ export const FilaMakerCard = (props:any) =>{
                     <Image source={{uri: Imagen}} style={styles.imageStyle}/>
                 </View>
                 <View style={styles.detailsFilaMaker}>
-                    <Text style={styles.textInfo}>Nombre: {Nombre}</Text>
-                    <Text style={styles.textInfo}>Precio: {Precio} Bs</Text>
-                    <Text style={styles.textInfo}>Zona: {Zona}</Text>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={{...styles.textInfo,color:'#0ca5b0'}}>Nombre: </Text>
+                        <Text style={styles.textInfo}>{Nombre}</Text>
+                    </View>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={{...styles.textInfo,color:'#0ca5b0'}}>Precio: </Text>
+                        <Text style={styles.textInfo}>{Precio} Bs</Text>
+                    </View>
+                    <View style={{flexDirection:'row'}}>
+                        <Text style={{...styles.textInfo,color:'#0ca5b0'}}>Zona: </Text>
+                        <Text style={styles.textInfo}>{Zona}</Text>
+                    </View>
                     <RatingDynamic props={{Rating}}/>
                 </View>
             </View>

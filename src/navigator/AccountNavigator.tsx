@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from "../screens/account/LoginScreen";
 import { useSelector } from "react-redux";
 import { HomeNavigator } from "./HomeNavigator";
+import { SignUpScreen } from "../screens/account/SignUpScreen";
 
 
 
@@ -19,8 +20,9 @@ export const AccountNavigator = () => {
 
             {selector.isLogin ?
                 <Stack.Screen name='HomeScreen' component={HomeNavigator} /> :
-                <Stack.Screen name='LoginScreen' component={LoginScreen} />
+                <Stack.Screen name='LoginScreen' component={LoginScreen} />                
             }
+            <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
 
 
         </Stack.Navigator>
